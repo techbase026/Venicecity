@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Venice City</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <img src="venice-logo.png" alt="City of Venice - The SWISS Update" class="logo-img">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="index.html#features" class="nav-link">Caratteristiche</a></li>
+                    <li><a href="shop.html" class="nav-link active">Shop</a></li>
+                    <li><a href="index.html#server" class="nav-link">Server</a></li>
+                    <li><a href="index.html#contact" class="nav-link">Contatti</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+   <!-- Shop Hero con logo -->
+<section class="shop-hero">
+    <div class="container">
+        <!-- Logo centrato sopra il titolo -->
+        <img src="venice-logo.png" alt="City of Venice - The SWISS Update" class="shop-hero-logo">
+        
+        <h1 class="section-title">Shop Esclusivo</h1>
+        <p class="section-subtitle">Personalizza la tua esperienza con item premium</p>
+    </div>
+</section>
+
+    <!-- Shop Main -->
+    <section class="shop-section">
+        <div class="container">
+            <!-- Filtri -->
+            <div class="shop-filters">
+                <button class="filter-btn active" data-category="all">Tutti</button>
+                <button class="filter-btn" data-category="vehicles">Veicoli</button>
+                <button class="filter-btn" data-category="skins">Skin</button>
+                <button class="filter-btn" data-category="weapons">Armi</button>
+                <button class="filter-btn" data-category="accessories">Accessori</button>
+            </div>
+
+            <!-- Griglia prodotti -->
+            <div class="shop-grid">
+                <!-- Veicoli -->
+                <div class="shop-item" data-category="vehicles">
+                    <div class="item-image">🚓</div>
+                    <div class="item-badge popular">Popular</div>
+                    <h3>Ingresso Faziobe</h3>
+                    <p class="item-desc">Ingresso fazione a scelta</p>
+                    <div class="item-price">25 robux <span class="robux">R$</span></div>
+                    <button class="btn btn-buy">Acquista</button>
+                </div>
+
+                <div class="shop-item" data-category="vehicles">
+                    <div class="item-image">🚁</div>
+                    <h3>PG Minorenne</h3>
+                    <p class="item-desc">Pg minorenne</p>
+                    <div class="item-price">33 robux <span class="robux">R$</span></div>
+                    <button class="btn btn-buy">Acquista</button>
+                </div>
+
+                <div class="shop-item" data-category="vehicles">
+                    <div class="item-image">🚗</div>
+                    <div class="item-badge new">New</div>
+                    <h3>Supercar Kriminal</h3>
+                    <p class="item-desc">Velocità estrema + nitro boost</p>
+                    <div class="item-price">355 robux <span class="robux">R$</span></div>
+                    <button class="btn btn-buy">Acquista</button>
+                </div>
+
+                <!-- Skin -->
+                
+
+                <!-- Armi -->
+                
+
+                <!-- Accessori -->
+              
+
+            <!-- Pulsante carrello (fittizio) -->
+            <div class="cart-summary">
+                <button class="btn btn-cart">Carrello (0)</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Venice City - Emergency Response Server su Roblox</p>
+            <p>Futuristicamente ispirato a Venezia • Powered by Neon Tech ⚡</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Filtro shop migliorato
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const category = btn.dataset.category;
+
+                document.querySelectorAll('.shop-item').forEach(item => {
+                    if (category === 'all' || item.dataset.category === category) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 50);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.95)';
+                        setTimeout(() => item.style.display = 'none', 300);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
