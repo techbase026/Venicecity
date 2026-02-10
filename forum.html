@@ -18,9 +18,9 @@
                 </div>
                 <ul class="nav-links">
                     <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="index.html#features" class="nav-link">Caratteristiche</a></li>
+                    <li><a href="features.html" class="nav-link">Caratteristiche</a></li>
                     <li><a href="shop.html" class="nav-link">Shop</a></li>
-                    <li><a href="index.html#server" class="nav-link">Server</a></li>
+                    <li><a href="server.html" class="nav-link">Server</a></li>
                     <li><a href="forum.html" class="nav-link active">Forum</a></li>
                     <li><a href="index.html#contact" class="nav-link">Contatti</a></li>
                 </ul>
@@ -36,8 +36,8 @@
     <!-- Forum Hero -->
     <section class="forum-hero">
         <div class="container">
-            <h1 class="section-title">Forum Venice City</h1>
-            <p class="section-subtitle">Chiedi, rispondi e discuti con la community</p>
+            <h1 class="section-title">Venice City Community Forum</h1>
+            <p class="section-subtitle">Supporto, suggerimenti, discussioni e confronto con tutta la community</p>
         </div>
     </section>
 
@@ -46,11 +46,11 @@
         <div class="container">
             <!-- Nuovo Post Form -->
             <div class="new-post-box glass">
-                <h3>💬 Fai una nuova domanda</h3>
+                <h3>💬 Crea un nuovo topic</h3>
                 <form id="questionForm">
-                    <input type="text" placeholder="Titolo della domanda (es: Come sbloccare il veicolo speciale?)" required>
-                    <textarea placeholder="Scrivi qui la tua domanda in dettaglio..." rows="4" required></textarea>
-                    <button type="submit" class="btn btn-primary">Pubblica Domanda</button>
+                    <input type="text" placeholder="Titolo (es: Bug canali / Domanda rank / Idea per l'update)" required>
+                    <textarea placeholder="Descrivi nel dettaglio il tuo problema, suggerimento o domanda..." rows="5" required></textarea>
+                    <button type="submit" class="btn btn-primary">PUBBLICA ORA</button>
                 </form>
             </div>
 
@@ -58,34 +58,33 @@
             <div class="questions-list">
                 <div class="question-card">
                     <div class="question-header">
-                        <h3>Come funziona il rank premium?</h3>
-                        <span class="category">Rank & Premium</span>
-                        <span class="date">2 ore fa</span>
+                        <h3>Come sbloccare i reward del Premium Pass?</h3>
+                        <span class="category">Premium & Rank</span>
+                        <span class="date">3 ore fa</span>
                     </div>
-                    <p class="question-preview">Ciao, ho comprato il premium pass ma non vedo i veicoli esclusivi...</p>
+                    <p class="question-preview">Ho acquistato il pass ma non ricevo veicoli né uniformi esclusive. Cosa devo fare?</p>
                     <div class="question-footer">
                         <span>👤 Officer_Neon</span>
-                        <span>💬 8 risposte</span>
+                        <span>💬 11 risposte</span>
                         <button class="toggle-answer">Mostra risposte</button>
                     </div>
                     <div class="answers" style="display:none;">
                         <div class="answer">
-                            <strong>Admin_Venice:</strong> Devi andare nel menu Rank e reclamare i reward. Se non funziona riavvia il gioco.
+                            <strong>Admin_Venice:</strong> Vai nel menu Rank → Reclama ricompense. Se non funziona, fai logout/login o riavvia Roblox.
                         </div>
                     </div>
                 </div>
 
-                <!-- Altre domande di esempio -->
                 <div class="question-card">
                     <div class="question-header">
-                        <h3>Mappa Venezia buggata?</h3>
-                        <span class="category">Mappa</span>
-                        <span class="date">5 ore fa</span>
+                        <h3>Caduta sotto la mappa vicino ai canali?</h3>
+                        <span class="category">Bug & Mappa</span>
+                        <span class="date">7 ore fa</span>
                     </div>
-                    <p class="question-preview">Quando vado nel canale vicino al ponte, il personaggio cade sotto la mappa...</p>
+                    <p class="question-preview">Quando corro lungo i canali o sui ponti il personaggio cade sotto la mappa. È un bug noto?</p>
                     <div class="question-footer">
                         <span>👤 Agent_Cyber</span>
-                        <span>💬 12 risposte</span>
+                        <span>💬 19 risposte</span>
                         <button class="toggle-answer">Mostra risposte</button>
                     </div>
                 </div>
@@ -95,7 +94,6 @@
 
     <script src="script.js"></script>
     <script>
-        // Toggle risposte
         document.querySelectorAll('.toggle-answer').forEach(btn => {
             btn.addEventListener('click', () => {
                 const answers = btn.parentElement.parentElement.querySelector('.answers');
@@ -104,11 +102,18 @@
             });
         });
 
-        // Form submit (demo)
         document.getElementById('questionForm').addEventListener('submit', e => {
             e.preventDefault();
-            alert('Domanda pubblicata! (Funzionalità completa richiede backend)');
+            alert('Topic pubblicato! (Il sistema completo richiede un backend)');
         });
     </script>
 </body>
 </html>
+
+<!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Venice City – The SWISS Update</p>
+            <p>Sito web realizato esclusivamente per il Server Venice City • Creato da Karate Dieci & Team</p>
+        </div>
+    </footer> 

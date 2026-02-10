@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server - Venice City | The SWISS Update</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <img src="venice-logo.png" alt="Venice City" class="logo-img">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="features.html" class="nav-link">Caratteristiche</a></li>
+                    <li><a href="shop.html" class="nav-link">Shop</a></li>
+                    <li><a href="server.html" class="nav-link active">Server</a></li>
+                    <li><a href="team.html" class="nav-link">Team</a></li>
+                    <li><a href="index.html#contact" class="nav-link">Contatti</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <img src="venice-logo.png" alt="Venice City - The SWISS Update" class="hero-logo">
+            <h1 class="hero-title-subtitle">Il Server Venice City</h1>
+            <p class="hero-subtitle">The SWISS Update</p>
+            <p class="hero-description">
+                La storia del progetto e come unirti alla Venezia cyber-futuristica più immersiva su Roblox.
+            </p>
+        </div>
+    </section>
+
+    <!-- Layout principale: due box affiancate -->
+    <section class="server-layout">
+        <div class="container">
+            <div class="layout-grid">
+
+                <!-- Box sinistra: Storia -->
+                <div class="story-box glass">
+                    <h2 class="box-title">La Nascita di Venice City</h2>
+                    <div class="box-content">
+                        <p>
+                            Nato nel // come semplice esperimento di appassionati di <strong>Emergency Response: Liberty County</strong>, 
+                            il progetto voleva far si che le personi si appassionassero al roleplay.
+                        </p>
+                        <p>
+                            Nel // arriva la v2 del server <strong>Founder Nuovo staff nuovo e nuove dinamiche di gioco</strong> 
+                            <strong>Venice City</strong>.
+                        </p>
+                        <p>
+                            Nel 2026 esplode con <strong>The SWISS Update</strong>: Nuove fazioni nuovi staff e nuovo sistema di economia
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Box destra: Come entrare -->
+                <div class="join-box glass">
+                    <h2 class="box-title">Come Entrare nel Server</h2>
+                    
+                    <div class="join-steps">
+                        <div class="step">
+                            <div class="step-icon">1</div>
+                            <div class="step-content">
+                                <h3>Avvia Roblox</h3>
+                                <p>Apri Roblox sul tuo dispositivo (PC, mobile o console).</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-icon">2</div>
+                            <div class="step-content">
+                                <h3>Entra nel gioco base</h3>
+                                <p>Avvia <strong>Emergency Response: Liberty County</strong>.</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-icon">3</div>
+                            <div class="step-content">
+                                <h3>Inserisci il codice</h3>
+                                <div class="code-container">
+                                    <span class="server-code">gxHrB</span>
+                                    <button class="btn btn-copy" onclick="copyToClipboard('gxHrB')">Copia codice</button>
+                                </div>
+                                <p class="note">Codice attuale • Controlla Discord se non funziona</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-icon">4</div>
+                            <div class="step-content">
+                                <h3>Gioca e divertiti</h3>
+                                <p>Segui le regole, scegli il tuo ruolo e vivi Venice City!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="join-extra">
+                        <h3>Consigli utili</h3>
+                        <ul>
+                            <li>Connessione stabile ≥ 8 Mbps</li>
+                            <li>Leggi le regole su Discord prima di iniziare</li>
+                            <li>Problemi? Apri ticket su #supporto in Discord</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CTA finale -->
+            <div class="cta-section">
+                <h2>Pronto a entrare nella Venezia del futuro?</h2>
+                <div class="cta-buttons">
+                    <a href="https://discord.gg/H22nMerW3e" target="_blank" class="btn btn-primary">Unisciti al Discord</a>
+                    <button class="btn btn-secondary" onclick="copyToClipboard('gxHrB')">Copia Codice Server</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Venice City – The SWISS Update</p>
+            <p>Il server Emergency Response più avanzato su Roblox</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                
+            }).catch(err => {
+                
+            });
+        }
+    </script>
+
+</body>
+</html>

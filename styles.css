@@ -872,3 +872,348 @@ body {
     filter: drop-shadow(0 6px 20px rgba(168, 85, 247, 0.3)); /* glow leggero, opzionale */
     transition: transform 0.4s ease;
 }
+
+/* ── SERVER PAGE - Box che si adattano al testo (altezza dinamica) ── */
+
+.server-layout {
+    padding: 4rem 0 8rem;
+}
+
+.layout-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;           /* sinistra e destra su desktop */
+    gap: 2.5rem;
+    margin-bottom: 5rem;
+}
+
+@media (max-width: 992px) {
+    .layout-grid {
+        grid-template-columns: 1fr;            /* una sotto l'altra su mobile */
+        gap: 3rem;
+    }
+}
+
+/* Box base - altezza automatica in base al testo */
+.story-box,
+.join-box {
+    padding: 2.2rem 1.8rem;
+    border-radius: 20px;
+    background: rgba(30, 30, 60, 0.18);
+    backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(168, 85, 247, 0.25);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    height: auto;                               /* altezza segue il contenuto */
+    min-height: unset;                          /* nessuna altezza minima forzata */
+}
+
+/* Hover rimane invariato */
+.story-box:hover,
+.join-box:hover {
+    transform: translateY(-10px);
+    border-color: #a855f7;
+    box-shadow: 0 0 35px rgba(168, 85, 247, 0.3);
+}
+
+/* Titolo box */
+.box-title {
+    font-size: 2.1rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    background: linear-gradient(90deg, #a855f7, #7dd3fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Testo storia (sinistra) - compatto */
+.story-box .box-content p {
+    font-size: 1.08rem;
+    line-height: 1.65;
+    margin-bottom: 1.2rem;
+    color: #d0d0ff;
+}
+
+/* Box "Come entrare" (destra) - in evidenza */
+.join-box {
+    border: 2px solid rgba(168, 85, 247, 0.45);
+    box-shadow: 0 0 35px rgba(168, 85, 247, 0.28);
+    background: rgba(30, 30, 60, 0.28);
+}
+
+.join-box .box-title {
+    background: linear-gradient(90deg, #ec4899, #a855f7, #7dd3fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Passaggi */
+.join-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.step {
+    display: flex;
+    gap: 1.4rem;
+    align-items: flex-start;
+}
+
+.step-icon {
+    min-width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #a855f7, #7c3aed);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 0 18px rgba(168, 85, 247, 0.5);
+}
+
+.step-content h3 {
+    font-size: 1.35rem;
+    margin-bottom: 0.5rem;
+}
+
+.step-content p {
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+/* Codice server */
+.code-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+}
+
+.server-code {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--accent), var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Consigli */
+.join-extra {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(168, 85, 247, 0.08);
+    border-radius: 14px;
+}
+
+.join-extra h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.9rem;
+    color: #a78bfa;
+}
+
+/* CTA finale */
+.cta-section {
+    text-align: center;
+    padding: 5rem 2rem;
+    background: rgba(30, 30, 60, 0.25);
+    border-radius: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.cta-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2.2rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   FEATURES PAGE - Futuristic & Immersive Design
+   ========================================================================== */
+
+/* Hero con particelle neon */
+.features-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 12rem 2rem 8rem;
+    min-height: 70vh;
+}
+
+.neon-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(168, 85, 247, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+    opacity: 0.7;
+}
+
+/* Logo con animazione float + glow */
+.hero-logo.neon-float {
+    animation: float 7s ease-in-out infinite, neonPulse 4s infinite alternate;
+}
+
+@keyframes neonPulse {
+    0% { filter: drop-shadow(0 0 15px #a855f7); }
+    100% { filter: drop-shadow(0 0 35px #ec4899); }
+}
+
+/* Titolo con effetto typing */
+.typing-effect {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 4px solid #7dd3fc;
+    animation: typing 4s steps(40, end) forwards, blink 0.8s infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+/* Griglia features */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.2rem;
+}
+
+.feature-card {
+    padding: 2.8rem 2.2rem;
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    background: rgba(25, 25, 45, 0.65);
+    border: 1px solid rgba(168, 85, 247, 0.25);
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent, rgba(168, 85, 247, 0.08), transparent);
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.feature-card:hover::before {
+    opacity: 1;
+}
+
+.feature-card:hover {
+    transform: translateY(-14px) scale(1.03);
+    border-color: #a855f7;
+    box-shadow: 0 25px 60px rgba(168, 85, 247, 0.35);
+}
+
+.neon-icon {
+    font-size: 5rem;
+    margin-bottom: 1.6rem;
+    display: block;
+    transition: all 0.5s;
+}
+
+.feature-card:hover .neon-icon {
+    transform: scale(1.2) rotate(5deg);
+    filter: drop-shadow(0 0 25px currentColor);
+}
+
+.feature-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: #e0e0ff;
+}
+
+.feature-card p {
+    font-size: 1.08rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+/* CTA finale */
+.features-cta {
+    text-align: center;
+    margin-top: 6rem;
+}
+
+.ripple-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple-btn::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.ripple-btn:active::after {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+}
+
+/* ── Features Section - Card più piccole e compatte ── */
+.features {
+    padding: 8rem 0;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));   /* ← ridotto da 300px */
+    gap: 1.8rem;                                                   /* ← ridotto da 2rem */
+}
+
+.feature-card {
+    background: rgba(20, 20, 35, 0.7);
+    border: 1px solid rgba(120, 113, 166, 0.2);
+    border-radius: 16px;
+    padding: 1.8rem 1.5rem;                                        /* ← ridotto da 2rem */
+    text-align: center;
+    transition: all 0.3s;
+    min-height: 320px;                                             /* mantiene proporzioni uniformi */
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    border-color: #a78bfa;
+    box-shadow: 0 20px 50px rgba(168, 85, 247, 0.28);
+}
+
+.feature-icon {
+    font-size: 3.2rem;                                             /* ← ridotto da 3.5rem */
+    margin-bottom: 1.2rem;
+}
+
+.feature-card h3 {
+    font-size: 1.35rem;                                            /* ← ridotto da 1.5rem */
+    margin-bottom: 0.8rem;
+}
+
+.feature-card p {
+    font-size: 1.02rem;                                            /* ← leggermente più piccolo */
+    line-height: 1.6;
+}
