@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contenuti Ufficiali - Venice City</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <img src="venice-logo.png" alt="City of Venice - The SWISS Update" class="logo-img">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="features.html" class="nav-link">Caratteristiche</a></li>
+                    <li><a href="shop.html" class="nav-link">Shop</a></li>
+                    <li><a href="server.html" class="nav-link">Server</a></li>
+                    <li><a href="team.html" class="nav-link">Team</a></li>
+                    <li><a href="contenuti.html" class="nav-link active">Contenuti</a></li>
+                    <li><a href="index.html#contact" class="nav-link">Contatti</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="official-hero">
+        <div class="container">
+            <h1 class="section-title">Contenuti Ufficiali</h1>
+            <p class="section-subtitle">Carousel ufficiale degli scatti in-game del team Venice City.</p>
+        </div>
+    </section>
+
+    <section class="carousel-section">
+        <div class="container">
+            <div class="carousel-shell">
+                <div class="carousel-viewport" id="carousel-viewport" aria-live="polite">
+                    <article class="slide active" data-name="Foto 1">
+                        <img src="foto 1.png" alt="Foto 1">
+                        <div class="slide-overlay">
+                            <h2 class="slide-title">Foto 1</h2>
+                            <p class="slide-sub">Scatto ufficiale Venice City.</p>
+                        </div>
+                    </article>
+
+                    <article class="slide" data-name="Foto 2">
+                        <img src="foto 2.png" alt="Foto 2">
+                        <div class="slide-overlay">
+                            <h2 class="slide-title">Foto 2</h2>
+                            <p class="slide-sub">Scatto ufficiale Venice City.</p>
+                        </div>
+                    </article>
+
+                    <article class="slide" data-name="Foto 3">
+                        <img src="foto 3.png" alt="Foto 3">
+                        <div class="slide-overlay">
+                            <h2 class="slide-title">Foto 3</h2>
+                            <p class="slide-sub">Scatto ufficiale Venice City.</p>
+                        </div>
+                    </article>
+
+                    <article class="slide" data-name="Foto 4">
+                        <img src="foto 4.png" alt="Foto 4">
+                        <div class="slide-overlay">
+                            <h2 class="slide-title">Foto 4</h2>
+                            <p class="slide-sub">Scatto ufficiale Venice City.</p>
+                        </div>
+                    </article>
+
+                    <button class="carousel-control prev" id="carousel-prev" aria-label="Slide precedente">&#10094;</button>
+                    <button class="carousel-control next" id="carousel-next" aria-label="Slide successiva">&#10095;</button>
+                </div>
+
+                <div class="carousel-dots" id="carousel-dots" aria-label="Navigazione slide"></div>
+                <div class="carousel-caption-box">
+                    <h3 id="caption-title">Foto 1</h3>
+                    <p id="caption-text">Descrizione foto 1: inserisci qui dettagli della scena in-game.</p>
+                </div>
+
+                <div class="thumb-row" id="thumb-row">
+                    <button class="thumb active" data-index="0" aria-label="Apri Foto 1">
+                        <img src="foto 1.png" alt="Miniatura Foto 1">
+                        <span>Foto 1</span>
+                    </button>
+                    <button class="thumb" data-index="1" aria-label="Apri Foto 2">
+                        <img src="foto 2.png" alt="Miniatura Foto 2">
+                        <span>Foto 2</span>
+                    </button>
+                    <button class="thumb" data-index="2" aria-label="Apri Foto 3">
+                        <img src="foto 3.png" alt="Miniatura Foto 3">
+                        <span>Foto 3</span>
+                    </button>
+                    <button class="thumb" data-index="3" aria-label="Apri Foto 4">
+                        <img src="foto 4.png" alt="Miniatura Foto 4">
+                        <span>Foto 4</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Venice City - The SWISS Update</p>
+            <p>Contenuti ufficiali del server Venice City</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const slides = Array.from(document.querySelectorAll('.slide'));
+        const dotsWrap = document.getElementById('carousel-dots');
+        const thumbs = Array.from(document.querySelectorAll('.thumb'));
+        const nextBtn = document.getElementById('carousel-next');
+        const prevBtn = document.getElementById('carousel-prev');
+        const captionTitle = document.getElementById('caption-title');
+        const captionText = document.getElementById('caption-text');
+        const descriptions = [
+            'Descrizione foto 1: inserisci qui dettagli della scena in-game.',
+            'Descrizione foto 2: inserisci qui dettagli della scena in-game.',
+            'Descrizione foto 3: inserisci qui dettagli della scena in-game.',
+            'Descrizione foto 4: inserisci qui dettagli della scena in-game.'
+        ];
+        let currentIndex = 0;
+        let autoTimer;
+
+        slides.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.className = i === 0 ? 'dot active' : 'dot';
+            dot.type = 'button';
+            dot.setAttribute('aria-label', `Vai a Foto ${i + 1}`);
+            dot.addEventListener('click', () => {
+                goTo(i);
+                resetAuto();
+            });
+            dotsWrap.appendChild(dot);
+        });
+
+        const dots = Array.from(document.querySelectorAll('.dot'));
+
+        function goTo(index) {
+            currentIndex = (index + slides.length) % slides.length;
+            slides.forEach((slide, i) => slide.classList.toggle('active', i === currentIndex));
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
+            thumbs.forEach((thumb, i) => thumb.classList.toggle('active', i === currentIndex));
+            captionTitle.textContent = `Foto ${currentIndex + 1}`;
+            captionText.textContent = descriptions[currentIndex];
+        }
+
+        function nextSlide() {
+            goTo(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            goTo(currentIndex - 1);
+        }
+
+        function startAuto() {
+            autoTimer = setInterval(nextSlide, 4500);
+        }
+
+        function resetAuto() {
+            clearInterval(autoTimer);
+            startAuto();
+        }
+
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            resetAuto();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            resetAuto();
+        });
+
+        thumbs.forEach((thumb, i) => {
+            thumb.addEventListener('click', () => {
+                goTo(i);
+                resetAuto();
+            });
+        });
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowRight') {
+                nextSlide();
+                resetAuto();
+            }
+            if (e.key === 'ArrowLeft') {
+                prevSlide();
+                resetAuto();
+            }
+        });
+
+        startAuto();
+    </script>
+</body>
+</html>
