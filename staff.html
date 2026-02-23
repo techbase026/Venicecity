@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Staff Login - Venice City</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0a0a0a;
+      color: #e0e0e0;
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      width: 100%;
+      max-width: 420px;
+      background: #111;
+      padding: 32px;
+      border-radius: 12px;
+      border: 1px solid #333;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+    h1 {
+      text-align: center;
+      color: #ffdd00;
+      margin-bottom: 24px;
+      font-size: 1.8rem;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #ccc;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #444;
+      border-radius: 6px;
+      background: #1a1a1a;
+      color: white;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    input:focus {
+      outline: none;
+      border-color: #ffdd00;
+      box-shadow: 0 0 0 2px rgba(255,221,0,0.2);
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      background: #ffdd00;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    button:hover {
+      background: #ffee44;
+      transform: translateY(-1px);
+    }
+    #error-message {
+      color: #ff4d4d;
+      text-align: center;
+      margin-top: 12px;
+      min-height: 20px;
+    }
+    #staff-area {
+      display: none;
+    }
+    .staff-welcome {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .actions-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .action-btn {
+      padding: 14px;
+      background: #222;
+      color: white;
+      border: 1px solid #444;
+      border-radius: 6px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .action-btn:hover {
+      background: #333;
+      border-color: #666;
+    }
+    .logout-btn {
+      margin-top: 30px;
+      background: #444;
+      color: white;
+    }
+    .logout-btn:hover {
+      background: #555;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container" id="login-container">
+  <h1>Staff Venice City</h1>
+  
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" id="username" autocomplete="off" placeholder="es. admin, mod1...">
+  </div>
+  
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" id="password" placeholder="••••••••">
+  </div>
+  
+  <button onclick="tryLogin()">ACCEDI</button>
+  
+  <div id="error-message"></div>
+</div>
+
+<div class="container" id="staff-area">
+  <div class="staff-welcome">
+    <h2 id="welcome-text">Benvenuto</h2>
+    <p>Accesso staff – Venice City</p>
+  </div>
+
+  <div class="actions-grid">
+    <button class="action-btn" onclick="alert('Funzione Gestione Ban – da implementare')">Gestione Ban / Unban</button>
+    <button class="action-btn" onclick="alert('Funzione Annunci – da implementare')">Invia Annuncio Server</button>
+    <button class="action-btn" onclick="alert('Funzione Controllo Giocatori – da implementare')">Controlla Giocatori Online</button>
+    <button class="action-btn" onclick="alert('Funzione Reset Economy – da implementare')">Reset Economy / Warn</button>
+    <button class="action-btn" onclick="alert('Vedi Log recenti – da implementare')">Vedi Log Server</button>
+  </div>
+
+  <button class="action-btn logout-btn" onclick="logout()">Logout</button>
+</div>
+
+<script>
+  // =============================================
+  //  CREDENZIALI STAFF – MODIFICA QUI
+  // =============================================
+  const staffCredentials = {
+    "admin":        "veniceMaster2026",
+    "frankilio":    "frankboss123",
+    "moderatore1":  "modVenice456",
+    "moderatore2":  "m2pass789",
+    "emis":      "emis1234"
+    // aggiungi altri account qui
+  };
+
+  // =============================================
+
+  function tryLogin() {
+    const username = document.getElementById("username").value.trim().toLowerCase();
+    const password = document.getElementById("password").value;
+    const errorEl = document.getElementById("error-message");
+
+    errorEl.textContent = "";
+
+    if (!username || !password) {
+      errorEl.textContent = "Inserisci username e password";
+      return;
+    }
+
+    if (staffCredentials[username] && staffCredentials[username] === password) {
+      // Login riuscito
+      localStorage.setItem("staffLoggedIn", "true");
+      localStorage.setItem("staffUsername", username);
+      
+      document.getElementById("login-container").style.display = "none";
+      document.getElementById("staff-area").style.display = "block";
+      
+      document.getElementById("welcome-text").textContent = 
+        `Benvenuto ${username.charAt(0).toUpperCase() + username.slice(1)}`;
+    } else {
+      errorEl.textContent = "Credenziali non valide";
+    }
+  }
+
+  function logout() {
+    localStorage.removeItem("staffLoggedIn");
+    localStorage.removeItem("staffUsername");
+    location.reload();
+  }
+
+  // Controlla se è già loggato
+  window.addEventListener("load", () => {
+    if (localStorage.getItem("staffLoggedIn") === "true") {
+      const user = localStorage.getItem("staffUsername");
+      if (user && staffCredentials[user]) {
+        document.getElementById("login-container").style.display = "none";
+        document.getElementById("staff-area").style.display = "block";
+        document.getElementById("welcome-text").textContent = 
+          `Benvenuto ${user.charAt(0).toUpperCase() + user.slice(1)}`;
+      } else {
+        // Credenziale non più valida → logout forzato
+        localStorage.clear();
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
